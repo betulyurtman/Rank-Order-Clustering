@@ -3,7 +3,9 @@
 #Importing the necessary libraries.
 import pandas as pd 
 
-#Writing the parts and machines matrix. 
+#Writing the parts and machines matrix. The rows represent the machines and the columns represent the parts.
+#1 means the part 3 needs to be processed by machine 1. 
+#With this algorithm, we are trying to group the machine and parts.
 data = [[0,0,1,0,0,0,1,0,1],
         [1,0,0,1,1,0,0,0,0],
         [0,0,1,0,0,0,1,0,1],
@@ -12,13 +14,15 @@ data = [[0,0,1,0,0,0,1,0,1],
         [0,1,0,0,0,1,0,1,0],
         [0,0,1,0,0,0,1,0,1],
         [0,1,0,0,0,1,0,1,0]] 
+
+#We create a while loop for necessary calculations.
 i = 1
 while i < 8:
-    rv = [] #row value
-    rvc = [] #row value copy
-    rvi = [] #row value indices 
-    for i in range(len(data)): #row calculations
-        bv = 0 #binary value
+    rv = [] #Row value
+    rvc = [] #Row value copy
+    rvi = [] #Row value indices 
+    for i in range(len(data)): #Row calculations
+        bv = 0 #Binary value
         for j in range(len(data[0])):
             pwr = len(data[0]) - j -1
             bv = bv + data[i][j]*(2**pwr)
