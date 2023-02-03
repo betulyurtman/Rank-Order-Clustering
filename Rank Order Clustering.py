@@ -22,8 +22,8 @@ while i < 8:
     rvc = [] #Row value copy
     rvi = [] #Row value indices 
     for i in range(len(data)): #Row calculations
-        bv = 0 #Binary value
-        for j in range(len(data[0])):
+        bv = 0 #Binary value (You can understand this better from the explanation file.)
+        for j in range(len(data[0])): 
             pwr = len(data[0]) - j -1
             bv = bv + data[i][j]*(2**pwr)
         rv.append(bv)
@@ -41,6 +41,8 @@ while i < 8:
     for i in range(len(data)):
         data[i] = data_updated[i]
     data_T = list(zip(*data)) #taking tranpose of the data
+
+    #We are going to do the same calculations for the column values.
     cv = [] #column values
     cvc = [] #column values copy
     cvi = [] #column values indices
@@ -64,6 +66,7 @@ while i < 8:
     for i in range(len(data_T)): 
         data_T[i] = data_T_updated[i]
         
+    #Creating the data frame with the result we have found.
     final = pd.DataFrame(data_T, index=cvi, columns=rvi)
     final = final.transpose()
     print(final)
